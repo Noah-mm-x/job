@@ -124,15 +124,72 @@
 // var name = 'jz'
 // console.log(window.name) //jz
 
-let obj = {
-  a: 1,
-  [Symbol('a')]: 1
-}
-for (let m in obj) {
-  console.log(m)
-}
-for (let m of Reflect.ownKeys(obj)) {
-  console.log(m)
-}
+// let arr = [5,6,7]
+// let obj = {
+//   a: 1,
+//   [Symbol('a')]: 1
+// }
+// console.log(Object.getOwnPropertyNames(obj).concat(Object.getOwnPropertySymbols(obj)))
+// console.log(Object.getOwnPropertyNames(obj))
+// console.log(Object.getOwnPropertySymbols(obj))
+// for (let m in obj) {
+//   console.log(1, m)
+// }
+// for (let m of Reflect.ownKeys(obj)) {
+//   console.log(2, m)
+// } 
+// for(let m of Object.keys(obj)){
+//   console.log(m)
+// }
+// for(let index in arr) {
+//   console.log(3,index)
+// } 
 
-console.log(Reflect.ownKeys(obj))
+// for(let index of arr) {
+//   console.log(3,index)
+// }
+
+// console.log(Reflect.ownKeys(obj))
+
+// let obj = {}
+// Object.defineProperties(obj, {
+//   p1: {
+//     enumerable: true,
+//     value: 1
+//   },
+//   p2: {
+//     enumerable: false,
+//     value: 2
+//   }
+// })
+// console.log(Object.keys(obj)) // ["p1"]
+// console.log(Object.getOwnPropertyNames(obj)) // ["p1","p2"]
+
+// let obj = {
+//   test: 'a',
+//   fnc: function () { },
+//   u: undefined,
+//   reg: new RegExp('/d+/')
+// }
+// console.log(JSON.parse(JSON.stringify(obj)))
+
+// let arr = [1, 2, 3]
+// let obj = { a: 1 }
+// console.log(arr instanceof Array)
+// console.log(obj instanceof Array)
+// console.log(typeof arr)
+// console.log(typeof obj)
+// console.log(Array.isArray(arr))
+// console.log(Array.isArray(obj))
+// obj.__proto__ = Array.prototype
+// Object.setPrototypeOf(obj, Array.prototype)
+// console.log(obj instanceof Array)
+// function handleJudge(val) {
+//   const types = Object.prototype.toString.call(val)
+//   return function(){
+
+//   }
+// }
+// const val = handleJudge(arr)
+// console.log(Object.prototype.toString.call(arr))    
+// console.log(Array.prototype.isPrototypeOf(arr))
