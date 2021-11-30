@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  background: #abcdef;
+  /* box-sizing: border-box; */
+  /* box-sizing: content-box; */
+}

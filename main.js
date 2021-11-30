@@ -69,12 +69,12 @@
 //           sub.update()
 //       })
 //     }
+//     let dep = new Dep()
 //     let pub = {
 //       publish: function () {
 //         dep.notify()
 //       }
 //     }
-//     let dep = new Dep()
 //     pub.publish()
 //   })()
 // }
@@ -193,3 +193,83 @@
 // const val = handleJudge(arr)
 // console.log(Object.prototype.toString.call(arr))    
 // console.log(Array.prototype.isPrototypeOf(arr))
+
+// function sum(...args) {
+//   console.log(...args)
+//   let allArg = [...args,...arguments]
+//   let result = allArg.reduce((re, cu) => re + cu, 0)
+//   return result
+//   // return a + b + c
+// }
+// function curry(fn, ...args) {
+//   // 传入函数的参数长度
+//   const fnLen = fn.length
+//   return function (...restArgs) {
+//     const allArgs = [...args, ...restArgs];
+//     // console.log('args', args)
+//     // console.log('restArgs', restArgs)
+//     console.log('fnLen', fnLen)
+//     console.log('allArgs', allArgs)
+//     if (allArgs.length > fnLen) {
+//       console.log(1)
+//       return fn.apply(null, allArgs)
+//     } else {
+//       console.log(2)
+//       return curry.call(fn, ...allArgs)
+//     }
+//   }
+// }
+// const currySum = curry(sum(1))
+// // console.log(currySum(1, 2, 3))
+// console.log(currySum(1)(1, 2)(1,2,2)(6,7))
+
+function sum(a, b, c) {
+  return a + b + c
+}
+console.log(sum.length)
+function curry(fn, args = []) {
+  return function () {
+    const restArgs = [...args, ...arguments]
+    console.log('r',restArgs.length)
+    console.log('f',fn.length)
+    if (restArgs.length < fn.length) {
+      return curry.call(null, fn, restArgs)
+    } else {
+      return fn.apply(null, restArgs)
+    }
+  }
+}
+const sumFn = curry(sum)
+console.log(sumFn(1,2))
+console.log(sumFn(1,2)(2))
+
+// let arr = [13, 34, 21, 6, 23, 12, 2, 1]
+// function bubbleSort(arr) {
+//   let temp;
+//   let len = arr.length
+//   for (let i = 0; i < len - 1; i++) {
+//     for (let j = 0; j < len - 1 - i; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         temp = arr[j]
+//         arr[j] = arr[j + 1]
+//         arr[j + 1] = temp
+//       }
+//     }
+//   }
+//   return arr
+// }
+// // console.log(bubbleSort(arr))
+// function insertSort(arr) {
+//   let len = arr.length, temp, j;
+//   for (let i = 1; i < len; i++) {
+//     temp = arr[i] //temp 间接等于 arr[j+1]
+//     j = i - 1
+//     while (j >= 0 && temp < arr[j]) {
+//       arr[j + 1] = arr[j]
+//       j--
+//     }
+//     arr[j + 1] = temp
+//   }
+//   return arr
+// }
+// // console.log(insertSort(arr))
